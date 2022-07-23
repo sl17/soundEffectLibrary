@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <link rel="stylesheet" href="./css/reset.css">
+  <script src="https://unpkg.com/vue@2.6.14/dist/vue.js"></script>
+</head>
+
+<body>
+  <div id="app">
+    <div class="wrap">
+      <div class="music-wrap" v-for="(item,i) in musicList" :key="'m'+i">
+        <div class="music-name">
+          {{item.title}}
+        </div>
+        <div class="music-media">
+          <audio :src="item.src" controls></audio>
+        </div>
+        <div class="music-down" @click="downloadMusic(item)">
+          <svg t="1658557010555" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg"
+            p-id="1380" width="200" height="200">
+            <path
+              d="M288 352a224 224 0 1 1 448 0v0.704A176 176 0 0 1 720 704H672v-64h48a112 112 0 1 0 0-224H672v-64a160 160 0 0 0-320 0v64H304a112 112 0 1 0 0 224H352v64H304A176 176 0 0 1 288 352.704V352z m256 128v293.504l64-64 45.248 45.248L512 896l-141.248-141.248L416 709.504l64 64V480h64z"
+              fill="#068cfb" p-id="1381"></path>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+    new Vue({
+      el: '#app',
+      data: function () {
+        return {
+          musicList: [{
+            title: '夏日的梦',
+            src: './audio/2a0f6493f8f048a6a57c491a74d8ff9c.mp3'
+          }]
+        }
+      },
+      mounted() {},
+      methods: {
+        downloadMusic(item) {
+          // const blob = new Blob([item.src], {
+          //   type: 'audio/mpeg'
+          // });
+          const blobUrl = URL.createObjectURL(item.src);
+          const a = document.createElement('a');
+          a.href = item.src;
+          a.download = item.title;
+          a.click();
+          URL.revokeObjectURL(blobUrl);
+        }
+      }
+    })
+  </script>
+</body>
+
+</html>

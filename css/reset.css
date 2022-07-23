@@ -1,0 +1,41 @@
+* {
+	margin: 0;
+	padding: 0;
+	outline: none;
+}
+
+.music-wrap {
+	display: flex;
+}
+
+.round-wrap {
+	width: 40px;
+	height: 40px;
+	border-radius: 50%;
+	position: relative;
+}
+
+.round-cover {
+	width: 90%;
+	height: 90%;
+	border-radius: 50%;
+	position: absolute;
+	background: #fff;
+	margin: auto;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+}
+
+.music-media audio {
+	height: 32px;
+	overflow: hidden;
+}
+
+.music-down {}
+
+.music-down svg {
+	width: 30px;
+	height: 30px;
+}
