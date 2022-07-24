@@ -20,13 +20,16 @@
         <div class="music-media">
           <audio :src="item.src" controls></audio>
         </div>
-        <div class="music-down" @click="downloadMusic(item)">
-          <svg t="1658557010555" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg"
-            p-id="1380" width="200" height="200">
-            <path
-              d="M288 352a224 224 0 1 1 448 0v0.704A176 176 0 0 1 720 704H672v-64h48a112 112 0 1 0 0-224H672v-64a160 160 0 0 0-320 0v64H304a112 112 0 1 0 0 224H352v64H304A176 176 0 0 1 288 352.704V352z m256 128v293.504l64-64 45.248 45.248L512 896l-141.248-141.248L416 709.504l64 64V480h64z"
-              fill="#068cfb" p-id="1381"></path>
-          </svg>
+        <!-- @click="downloadMusic(item)" -->
+        <div class="music-down">
+          <a :href="item.src" :download="item.title">
+            <svg t="1658557010555" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg"
+              p-id="1380" width="200" height="200">
+              <path
+                d="M288 352a224 224 0 1 1 448 0v0.704A176 176 0 0 1 720 704H672v-64h48a112 112 0 1 0 0-224H672v-64a160 160 0 0 0-320 0v64H304a112 112 0 1 0 0 224H352v64H304A176 176 0 0 1 288 352.704V352z m256 128v293.504l64-64 45.248 45.248L512 896l-141.248-141.248L416 709.504l64 64V480h64z"
+                fill="#068cfb" p-id="1381"></path>
+            </svg>
+          </a>
         </div>
       </div>
     </div>
@@ -36,26 +39,112 @@
       el: '#app',
       data: function () {
         return {
-          musicList: [{
-            title: '夏日的梦',
-            src: './audio/2a0f6493f8f048a6a57c491a74d8ff9c.mp3'
-          }]
+          musicList: [
+            {title: '爆炸1',src: './audio/life/explode/bomb0.ogg',levelOne:'生活',levelOneNum:'1',levelTwo:'爆炸',levelTwoNum:'1-1',},
+            {title: '爆炸2',src: './audio/life/explode/bomb1.ogg',levelOne:'生活',levelOneNum:'1',levelTwo:'爆炸',levelTwoNum:'1-1',},
+            {title: '爆炸3',src: './audio/life/explode/bomb2.ogg',levelOne:'生活',levelOneNum:'1',levelTwo:'爆炸',levelTwoNum:'1-1',},
+            {title: '爆炸4',src: './audio/life/explode/bomb3.ogg',levelOne:'生活',levelOneNum:'1',levelTwo:'爆炸',levelTwoNum:'1-1',},
+            {title: '爆炸5',src: './audio/life/explode/bombskill.mp3',levelOne:'生活',levelOneNum:'1',levelTwo:'爆炸',levelTwoNum:'1-1',},
+
+            {title: '电话1',src: './audio/life/office/common_button.ogg',levelOne:'生活',levelOneNum:'1',levelTwo:'办公',levelTwoNum:'1-2',},
+            {title: '电话2',src: './audio/life/office/item.ogg',levelOne:'生活',levelOneNum:'1',levelTwo:'办公',levelTwoNum:'1-2',},
+            {title: '电话3',src: './audio/life/office/jiesuan.ogg',levelOne:'生活',levelOneNum:'1',levelTwo:'办公',levelTwoNum:'1-2',},
+            {title: '报纸掉地',src: './audio/life/office/报纸掉地.mp3',levelOne:'生活',levelOneNum:'1',levelTwo:'办公',levelTwoNum:'1-2',},
+            {title: '抽纸巾',src: './audio/life/office/抽纸巾.mp3',levelOne:'生活',levelOneNum:'1',levelTwo:'办公',levelTwoNum:'1-2',},
+            {title: '翻书1',src: './audio/life/office/翻书00.mp3',levelOne:'生活',levelOneNum:'1',levelTwo:'办公',levelTwoNum:'1-2',},
+            {title: '翻书2',src: './audio/life/office/翻书01.mp3',levelOne:'生活',levelOneNum:'1',levelTwo:'办公',levelTwoNum:'1-2',},
+            {title: '翻书3',src: './audio/life/office/翻书02.mp3',levelOne:'生活',levelOneNum:'1',levelTwo:'办公',levelTwoNum:'1-2',},
+            {title: '快速撕纸',src: './audio/life/office/快速撕纸.mp3',levelOne:'生活',levelOneNum:'1',levelTwo:'办公',levelTwoNum:'1-2',},
+            {title: '鼠标点击',src: './audio/life/office/鼠标点击.mp3',levelOne:'生活',levelOneNum:'1',levelTwo:'办公',levelTwoNum:'1-2',},
+            {title: '撕纸',src: './audio/life/office/撕纸.mp3',levelOne:'生活',levelOneNum:'1',levelTwo:'办公',levelTwoNum:'1-2',},
+            {title: '撕纸01',src: './audio/life/office/撕纸01.mp3',levelOne:'生活',levelOneNum:'1',levelTwo:'办公',levelTwoNum:'1-2',},
+            {title: '撕纸02',src: './audio/life/office/撕纸02.mp3',levelOne:'生活',levelOneNum:'1',levelTwo:'办公',levelTwoNum:'1-2',},
+            {title: '撕纸03',src: './audio/life/office/撕纸03.mp3',levelOne:'生活',levelOneNum:'1',levelTwo:'办公',levelTwoNum:'1-2',},
+            {title: '撕纸04',src: './audio/life/office/撕纸04.mp3',levelOne:'生活',levelOneNum:'1',levelTwo:'办公',levelTwoNum:'1-2',},
+            {title: '文件扔到空中',src: './audio/life/office/文件扔到空中.mp3',levelOne:'生活',levelOneNum:'1',levelTwo:'办公',levelTwoNum:'1-2',},
+            {title: '纸颤抖',src: './audio/life/office/纸颤抖.mp3',levelOne:'生活',levelOneNum:'1',levelTwo:'办公',levelTwoNum:'1-2',},
+            {title: '纸抖动',src: './audio/life/office/纸抖动01.mp3',levelOne:'生活',levelOneNum:'1',levelTwo:'办公',levelTwoNum:'1-2',},
+            {title: '纸-翻书-抖动',src: './audio/life/office/纸-翻书-抖动.mp3',levelOne:'生活',levelOneNum:'1',levelTwo:'办公',levelTwoNum:'1-2',},
+            {title: '纸移动',src: './audio/life/office/纸移动.mp3',levelOne:'生活',levelOneNum:'1',levelTwo:'办公',levelTwoNum:'1-2',},
+            {title: '纸移动文件移动',src: './audio/life/office/纸移动文件移动.mp3',levelOne:'生活',levelOneNum:'1',levelTwo:'办公',levelTwoNum:'1-2',},
+
+            {title: '子弹1',src: './audio/life/weapon/zidan0.mp3',levelOne:'生活',levelOneNum:'1',levelTwo:'兵器',levelTwoNum:'1-3',},
+            {title: '子弹2',src: './audio/life/weapon/zidan1.mp3',levelOne:'生活',levelOneNum:'1',levelTwo:'兵器',levelTwoNum:'1-3',},
+            {title: '子弹3',src: './audio/life/weapon/zidan2.mp3',levelOne:'生活',levelOneNum:'1',levelTwo:'兵器',levelTwoNum:'1-3',},
+            {title: '子弹4',src: './audio/life/weapon/zidan4.mp3',levelOne:'生活',levelOneNum:'1',levelTwo:'兵器',levelTwoNum:'1-3',},
+            {title: '拔剑',src: './audio/life/weapon/拔剑.mp3',levelOne:'生活',levelOneNum:'1',levelTwo:'兵器',levelTwoNum:'1-3',},
+            {title: '出剑',src: './audio/life/weapon/出剑.mp3',levelOne:'生活',levelOneNum:'1',levelTwo:'兵器',levelTwoNum:'1-3',},
+            {title: '刀插入人身上',src: './audio/life/weapon/刀插入人身上.mp3',levelOne:'生活',levelOneNum:'1',levelTwo:'兵器',levelTwoNum:'1-3',},
+            {title: '刀光剑影转场紧张',src: './audio/life/weapon/刀光剑影转场紧张.mp3',levelOne:'生活',levelOneNum:'1',levelTwo:'兵器',levelTwoNum:'1-3',},
+            {title: '刀剑武器碰撞',src: './audio/life/weapon/刀剑武器碰撞.mp3',levelOne:'生活',levelOneNum:'1',levelTwo:'兵器',levelTwoNum:'1-3',},
+            {title: '锋利兵器穿刺后的血溅',src: './audio/life/weapon/锋利兵器穿刺后的血溅.mp3',levelOne:'生活',levelOneNum:'1',levelTwo:'兵器',levelTwoNum:'1-3',},
+            {title: '锋利刀',src: './audio/life/weapon/锋利刀的声音.mp3',levelOne:'生活',levelOneNum:'1',levelTwo:'兵器',levelTwoNum:'1-3',},
+            {title: '很多剑攻击',src: './audio/life/weapon/很多剑攻击.mp3',levelOne:'生活',levelOneNum:'1',levelTwo:'兵器',levelTwoNum:'1-3',},
+            {title: '挥大刀',src: './audio/life/weapon/挥大刀.mp3',levelOne:'生活',levelOneNum:'1',levelTwo:'兵器',levelTwoNum:'1-3',},
+            {title: '挥刀',src: './audio/life/weapon/挥刀.mp3',levelOne:'生活',levelOneNum:'1',levelTwo:'兵器',levelTwoNum:'1-3',},
+            {title: '挥刀1',src: './audio/life/weapon/挥刀01.mp3',levelOne:'生活',levelOneNum:'1',levelTwo:'兵器',levelTwoNum:'1-3',},
+            {title: '挥刀2',src: './audio/life/weapon/挥刀03.mp3',levelOne:'生活',levelOneNum:'1',levelTwo:'兵器',levelTwoNum:'1-3',},
+            {title: '剑法连击',src: './audio/life/weapon/剑法连击.mp3',levelOne:'生活',levelOneNum:'1',levelTwo:'兵器',levelTwoNum:'1-3',},
+            {title: '气流+刀剑类特殊效果',src: './audio/life/weapon/气流+刀剑类特殊效果.mp3',levelOne:'生活',levelOneNum:'1',levelTwo:'兵器',levelTwoNum:'1-3',},
+            {title: '手枪',src: './audio/life/weapon/手枪.mp3',levelOne:'生活',levelOneNum:'1',levelTwo:'兵器',levelTwoNum:'1-3',},
+            {title: '一刀下去倒计时',src: './audio/life/weapon/一刀下去倒计时.mp3',levelOne:'生活',levelOneNum:'1',levelTwo:'兵器',levelTwoNum:'1-3',},
+            
+            {title: '急刹车',src: './audio/life/car/急刹车.mp3',levelOne:'生活',levelOneNum:'1',levelTwo:'车辆',levelTwoNum:'1-4',},
+            {title: '汽车发动开走',src: './audio/life/car/汽车发动开走.mp3',levelOne:'生活',levelOneNum:'1',levelTwo:'车辆',levelTwoNum:'1-4',},
+
+            {title: '玻璃杯摔碎',src: './audio/life/smash/玻璃杯摔碎.mp3',levelOne:'生活',levelOneNum:'1',levelTwo:'打碎',levelTwoNum:'1-5',},
+            {title: '打碎玻璃',src: './audio/life/smash/打碎玻璃.mp3',levelOne:'生活',levelOneNum:'1',levelTwo:'打碎',levelTwoNum:'1-5',},
+            {title: '打碎玻璃1',src: './audio/life/smash/打碎玻璃01.mp3',levelOne:'生活',levelOneNum:'1',levelTwo:'打碎',levelTwoNum:'1-5',},
+            {title: '打碎东西',src: './audio/life/smash/打碎东西.mp3',levelOne:'生活',levelOneNum:'1',levelTwo:'打碎',levelTwoNum:'1-5',},
+            {title: '打碎花盆',src: './audio/life/smash/打碎花盆.mp3',levelOne:'生活',levelOneNum:'1',levelTwo:'打碎',levelTwoNum:'1-5',},
+            {title: '打碎花瓶',src: './audio/life/smash/打碎花瓶.mp3',levelOne:'生活',levelOneNum:'1',levelTwo:'打碎',levelTwoNum:'1-5',},
+            {title: '打碎花瓶1',src: './audio/life/smash/打碎花瓶01.mp3',levelOne:'生活',levelOneNum:'1',levelTwo:'打碎',levelTwoNum:'1-5',},
+            {title: '打碎盘子',src: './audio/life/smash/打碎盘子.mp3',levelOne:'生活',levelOneNum:'1',levelTwo:'打碎',levelTwoNum:'1-5',},
+            {title: '打碎瓶子',src: './audio/life/smash/打碎瓶子.mp3',levelOne:'生活',levelOneNum:'1',levelTwo:'打碎',levelTwoNum:'1-5',},
+            {title: '多个玻璃杯打碎',src: './audio/life/smash/多个玻璃杯打碎.mp3',levelOne:'生活',levelOneNum:'1',levelTwo:'打碎',levelTwoNum:'1-5',},
+            {title: '摔杯子',src: './audio/life/smash/摔杯子.mp3',levelOne:'生活',levelOneNum:'1',levelTwo:'打碎',levelTwoNum:'1-5',},
+            {title: '摔破酒杯',src: './audio/life/smash/摔破酒杯.mp3',levelOne:'生活',levelOneNum:'1',levelTwo:'打碎',levelTwoNum:'1-5',},
+            {title: '摔破碗',src: './audio/life/smash/摔破碗.mp3',levelOne:'生活',levelOneNum:'1',levelTwo:'打碎',levelTwoNum:'1-5',},
+
+            {title: '白炽灯电流',src: './audio/life/lamp/白炽灯电流.mp3',levelOne:'生活',levelOneNum:'1',levelTwo:'灯具',levelTwoNum:'1-6',},
+
+            {title: '红酒杯',src: './audio/life/table/红酒杯.mp3',levelOne:'生活',levelOneNum:'1',levelTwo:'饭桌',levelTwoNum:'1-7',},
+            {title: '酒杯',src: './audio/life/table/酒杯.mp3',levelOne:'生活',levelOneNum:'1',levelTwo:'饭桌',levelTwoNum:'1-7',},
+            {title: '碰杯+倒酒',src: './audio/life/table/碰杯+倒酒.mp3',levelOne:'生活',levelOneNum:'1',levelTwo:'饭桌',levelTwoNum:'1-7',},
+            {title: '有酒的红酒杯',src: './audio/life/table/有酒的红酒杯.mp3',levelOne:'生活',levelOneNum:'1',levelTwo:'饭桌',levelTwoNum:'1-7',},
+            {title: '有酒的酒杯',src: './audio/life/table/有酒的酒杯.mp3',levelOne:'生活',levelOneNum:'1',levelTwo:'饭桌',levelTwoNum:'1-7',},
+            {title: '整理碗盘',src: './audio/life/table/整理碗盘.mp3',levelOne:'生活',levelOneNum:'1',levelTwo:'饭桌',levelTwoNum:'1-7',},
+            {title: '锅铲碰碗',src: './audio/life/table/锅铲碰碗.mp3',levelOne:'生活',levelOneNum:'1',levelTwo:'饭桌',levelTwoNum:'1-7',},
+            {title: '杯子放在桌上',src: './audio/life/table/杯子放在桌上.mp3',levelOne:'生活',levelOneNum:'1',levelTwo:'饭桌',levelTwoNum:'1-7',},
+            {title: '杯子放在桌上1',src: './audio/life/table/杯子放在桌上01.mp3',levelOne:'生活',levelOneNum:'1',levelTwo:'饭桌',levelTwoNum:'1-7',},
+            {title: '盘子放在桌上1',src: './audio/life/table/盘子放在桌上_01.mp3',levelOne:'生活',levelOneNum:'1',levelTwo:'饭桌',levelTwoNum:'1-7',},
+            {title: '盘子放在桌上2',src: './audio/life/table/盘子放在桌上_02.mp3',levelOne:'生活',levelOneNum:'1',levelTwo:'饭桌',levelTwoNum:'1-7',},
+            {title: '筷子敲碗',src: './audio/life/table/筷子敲碗.mp3',levelOne:'生活',levelOneNum:'1',levelTwo:'饭桌',levelTwoNum:'1-7',},
+            {title: '收拾碗筷',src: './audio/life/table/收拾碗筷.mp3',levelOne:'生活',levelOneNum:'1',levelTwo:'饭桌',levelTwoNum:'1-7',},
+            {title: '挪动桌椅',src: './audio/life/table/挪动桌椅.mp3',levelOne:'生活',levelOneNum:'1',levelTwo:'饭桌',levelTwoNum:'1-7',},
+            {title: '挪桌子',src: './audio/life/table/挪桌子.mp3',levelOne:'生活',levelOneNum:'1',levelTwo:'饭桌',levelTwoNum:'1-7',},
+            {title: '椅子倒了',src: './audio/life/table/椅子倒了.mp3',levelOne:'生活',levelOneNum:'1',levelTwo:'饭桌',levelTwoNum:'1-7',},
+            {title: '撞桌子',src: './audio/life/table/撞桌子.mp3',levelOne:'生活',levelOneNum:'1',levelTwo:'饭桌',levelTwoNum:'1-7',},
+            {title: '搅拌食物',src: './audio/life/table/搅拌食物.mp3',levelOne:'生活',levelOneNum:'1',levelTwo:'饭桌',levelTwoNum:'1-7',},
+            
+
+          ]
         }
       },
-      mounted() {},
-      methods: {
-        downloadMusic(item) {
-          // const blob = new Blob([item.src], {
-          //   type: 'audio/mpeg'
-          // });
-          const blobUrl = URL.createObjectURL(item.src);
-          const a = document.createElement('a');
-          a.href = item.src;
-          a.download = item.title;
-          a.click();
-          URL.revokeObjectURL(blobUrl);
-        }
-      }
+      // mounted() { },
+      // methods: {
+        // downloadMusic(item) {
+        //   // const blob = new Blob([item.src], {
+        //   //   type: 'audio/mpeg'
+        //   // });
+        //   const blobUrl = URL.createObjectURL(item.src);
+        //   const a = document.createElement('a');
+        //   a.href = item.src;
+        //   a.download = item.title;
+        //   a.click();
+        //   URL.revokeObjectURL(blobUrl);
+        // }
+      // }
     })
   </script>
 </body>
