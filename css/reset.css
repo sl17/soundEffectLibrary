@@ -3,25 +3,46 @@
 	padding: 0;
 	outline: none;
 }
+.wrap{
+    overflow: hidden;
+    columns: 3;
+    width: 1000px;
+    margin: 0 auto;
+    
+}
+.category-wrap{
+    display: inline-block;
+    margin-bottom: 24px;
+}
+
+.category-wrap h4{
+    font-size: 16px;
+    margin-bottom: 10px;
+}
 
 .music-wrap {
 	display: flex;
+    overflow: hidden;
+    margin-bottom: 5px;
 }
 
 .music-name{
-    width: 100px;
+    width: 70px;
     overflow: hidden;
     white-space: nowrap;
     word-break: keep-all;
-    line-height: 32px;
+    line-height: 28px;
     padding-right: 15px;
+    font-size: 14px;
     text-overflow: ellipsis;
 }
 
+
 .music-media audio {
-	height: 32px;
+	height: 22px;
     width: 290px;
 	overflow: hidden;
+    font-size: 10px;
 }
 
 .music-down {
@@ -29,6 +50,59 @@
 }
 
 .music-down svg {
-	width: 30px;
-	height: 30px;
+	width: 24px;
+	height: 24px;
+}
+
+.progress_obj{
+    overflow: hidden;
+    width: 140px;
+}
+.right-wrap{
+    width: 110px;
+    padding: 0 5px;
+    float: right;
+    overflow: hidden;
+    padding-bottom: 5px;
+}
+
+.progress_obj p{
+    font-size: 12px;
+    margin-bottom: 4px;
+}
+.btn{
+    float: left;
+    width: 20px;
+    height: 20px;
+    margin-top: 5px;
+}
+.btn svg{
+    width: 16px;
+    height: 16px;
+}
+
+.progress_obj p.left{
+    
+    float: left;
+}
+
+.progress_obj p.right{
+    float: right;
+}
+.progress_bar{
+    clear: both;
+    position: relative;
+    border-radius: 4px;
+    height: 2px;
+    width: 110px;
+    background: #ddd;
+}
+.progress_cube{
+    position: absolute;
+    top: -3px;
+    width: 8px;
+    height: 8px;
+    border-radius: 8px;
+    box-shadow: 0 0 2px 0 #333;
+    background-color: #fff;
 }
