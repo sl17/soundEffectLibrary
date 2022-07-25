@@ -7,7 +7,7 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Document</title>
   <link rel="stylesheet" href="css/reset.css">
-  <script src="https://unpkg.com/vue@2.6.14/dist/vue.js"></script>
+  <script src="./js/vue@2.6.14.js"></script>
 </head>
 
 <body>
@@ -20,12 +20,6 @@
             {{sitem.title}}
           </div>
           <div class="music-media">
-            <!-- <audio :src="sitem.src" controls></audio> -->
-            <!-- <div class="progress_obj clear">
-              <p class="">00:00</p>
-              <div class="progress_bar" id="progress_bar"><div class="progress_cube" id="progress_cube" style="left: 520px;"></div></div>
-              <p class="">00:50</p>
-            </div> -->
             <component-a :src="sitem.src" :id="'cm'+i+'m'+j"></component-a>
           </div>
           <div class="music-down" >
@@ -62,7 +56,8 @@
             duration:0,
           },
           audio:undefined,
-          step:0
+          step:0,
+          status:2,//1 播放；2暂停；
         }
       },
       mounted(){
@@ -92,26 +87,40 @@
           return t;
         },
         play(){
-          this.audio.play()
+          this.audio.play();
+          this.status = 1;
+          this.audio.ontimeupdate = ()=>{
+            this.step  = (this.audio.currentTime/this.audio.duration*100)
+            if(this.audio.currentTime>=this.audio.duration){
+              this.status = 2;
+              this.step = 0
+            }
+          }
+        },
+        pause(){
+          this.audio.pause();
+          this.status = 2;
           this.audio.ontimeupdate = ()=>{
             this.step  = (this.audio.currentTime/this.audio.duration*100)
           }
+        },
+        jumpStep(el){
+          this.audio.currentTime = el.offsetX/110*this.audio.duration;
         }
       },
-      
       template: `
         <div class="progress_obj">
           <div class="right-wrap">
             <p class="right">{{audioInfo.duration}}</p>
             <p class="left">{{audioInfo.currentTime}}</p>
-            <div class="progress_bar" id="progress_bar"><div class="progress_cube" id="progress_cube" :style="'left:'+step+'%'"></div></div>
+            <div class="progress_bar" @click=jumpStep($event)><div class="progress_cube" :style="'width:'+step+'%'"></div></div>
           </div>
           <div class="btn play">
-            <svg @click="play" t="1658727116637" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="1339" width="200" height="200"><path d="M870.2 466.333333l-618.666667-373.28a53.333333 53.333333 0 0 0-80.866666 45.666667v746.56a53.206667 53.206667 0 0 0 80.886666 45.666667l618.666667-373.28a53.333333 53.333333 0 0 0 0-91.333334z" fill="#5C5C66" p-id="1340"></path></svg>  
-            </div>
-            </div>
-            `
-            // <svg t="1658727155103" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2261" width="200" height="200"><path d="M426.666667 138.666667v746.666666a53.393333 53.393333 0 0 1-53.333334 53.333334H266.666667a53.393333 53.393333 0 0 1-53.333334-53.333334V138.666667a53.393333 53.393333 0 0 1 53.333334-53.333334h106.666666a53.393333 53.393333 0 0 1 53.333334 53.333334z m330.666666-53.333334H650.666667a53.393333 53.393333 0 0 0-53.333334 53.333334v746.666666a53.393333 53.393333 0 0 0 53.333334 53.333334h106.666666a53.393333 53.393333 0 0 0 53.333334-53.333334V138.666667a53.393333 53.393333 0 0 0-53.333334-53.333334z" fill="#5C5C66" p-id="2262"></path></svg>
+            <svg v-if="status==2" @click="play" t="1658727116637" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="1339" width="200" height="200"><path d="M870.2 466.333333l-618.666667-373.28a53.333333 53.333333 0 0 0-80.866666 45.666667v746.56a53.206667 53.206667 0 0 0 80.886666 45.666667l618.666667-373.28a53.333333 53.333333 0 0 0 0-91.333334z" fill="#5C5C66" p-id="1340"></path></svg>  
+            <svg v-if="status==1" @click="pause" t="1658727155103" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2261" width="200" height="200"><path d="M426.666667 138.666667v746.666666a53.393333 53.393333 0 0 1-53.333334 53.333334H266.666667a53.393333 53.393333 0 0 1-53.333334-53.333334V138.666667a53.393333 53.393333 0 0 1 53.333334-53.333334h106.666666a53.393333 53.393333 0 0 1 53.333334 53.333334z m330.666666-53.333334H650.666667a53.393333 53.393333 0 0 0-53.333334 53.333334v746.666666a53.393333 53.393333 0 0 0 53.333334 53.333334h106.666666a53.393333 53.393333 0 0 0 53.333334-53.333334V138.666667a53.393333 53.393333 0 0 0-53.333334-53.333334z" fill="#5C5C66" p-id="2262"></path></svg>
+          </div>
+        </div>
+        `
     }
     new Vue({
       el: '#app',
@@ -120,6 +129,7 @@
       },
       data: function () {
         return {
+          id:'',
           musicList: [
             [
               {title: '爆炸1',src: './audio/life/explode/bomb0.ogg',levelOne:'生活',levelOneNum:'1',levelTwo:'爆炸',levelTwoNum:'1-1',},
@@ -272,17 +282,8 @@
           ]
         }
       },
-      // mounted() { },
-      methods: {
-        getAudioInfo(){
-        //   this.musicList.map(item=>{
-            
-        //   })
-        //   audio.addEventListener("timeupdate",function(){
-        //     (audio.currentTime,audio.duration)
-        //   })
-        }
-      }
+      mounted() { },
+      methods: {}
     })
     
   </script>
