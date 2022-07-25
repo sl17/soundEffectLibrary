@@ -96,13 +96,17 @@
     height: 2px;
     width: 110px;
     background: #ddd;
+    margin-right: 8px;
+    cursor: pointer;
 }
+
 .progress_cube{
     position: absolute;
-    top: -3px;
+    z-index: 5;
+    top: 0px;
+    left: 0;
     width: 8px;
-    height: 8px;
-    border-radius: 8px;
-    box-shadow: 0 0 2px 0 #333;
-    background-color: #fff;
+    height: 2px;
+    border-radius: 2px;
+    background-color: rgb(6, 141, 252);
 }
