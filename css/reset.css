@@ -7,8 +7,8 @@
     overflow: hidden;
     columns: 3;
     width: 1000px;
-    margin: 0 auto;
-    
+    margin: 50px auto 0;
+    padding-bottom: 50px;
 }
 .category-wrap{
     display: inline-block;
@@ -17,7 +17,12 @@
 
 .category-wrap h4{
     font-size: 16px;
-    margin-bottom: 10px;
+    margin-bottom: 15px;
+    border-left: 5px solid #41a1f1;
+    padding-left: 10px;
+    height: 16px;
+    line-height: 16px;
+
 }
 
 .music-wrap {
@@ -109,4 +114,38 @@
     height: 2px;
     border-radius: 2px;
     background-color: rgb(6, 141, 252);
+}
+.tips{
+    position: fixed;
+    top: 10px;
+    right: 10px;
+}
+.tips svg{
+    width: 20px;
+    height: 20px;
+}
+.title-list{
+    position: fixed;
+    z-index: 80;
+    top: 34px;
+    right: 0;
+    background-color: #fff;
+    padding-top: 10px;
+    padding-left: 10px;
+    border-radius: 5px;
+    box-shadow: 0 0 5px 0 rgba(0,0,0,.3);
+    max-width: 300px;
+    font-size: 0;
+}
+.title-list p{
+    display: inline-block;
+    font-size: 14px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    cursor: pointer;
+    user-select: none;
+}
+.title-list p a{
+    text-decoration: none;
+    color: #333;
 }
