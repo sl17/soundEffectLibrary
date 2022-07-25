@@ -12,9 +12,13 @@
 
 <body>
   <div id="app">
+    <div class="tips" @click="show=!show"><svg t="1658738311970" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="1360" width="200" height="200"><path d="M512 64C264.8 64 64 264.8 64 512s200.8 448 448 448 448-200.8 448-448S759.2 64 512 64z m32 704h-64v-64h64v64z m11.2-203.2l-5.6 4.8c-3.2 2.4-5.6 8-5.6 12.8v58.4h-64v-58.4c0-24.8 11.2-48 29.6-63.2l5.6-4.8c56-44.8 83.2-68 83.2-108C598.4 358.4 560 320 512 320c-49.6 0-86.4 36.8-86.4 86.4h-64C361.6 322.4 428 256 512 256c83.2 0 150.4 67.2 150.4 150.4 0 72.8-49.6 112.8-107.2 158.4z" p-id="1361" fill="#8a8a8a"></path></svg></div>
+    <div class="title-list" v-if="show">
+      <p v-for="(item,i) in listArr" :key="'bl'+i"><a :href="'#'+item">{{item}}</a></p>
+    </div>
     <div class="wrap">
       <div class="category-wrap" v-for="(item,i) in musicList" :key="'cm'+i">
-        <h4>{{item[0]&&item[0].levelTwo}}</h4>
+        <h4 :id="item[0]&&item[0].levelTwo">{{item[0]&&item[0].levelTwo}}</h4>
         <div class="music-wrap" v-for="(sitem,j) in item" :key="'cm'+i+'m'+j">
           <div class="music-name">
             {{sitem.title}}
@@ -130,6 +134,7 @@
       data: function () {
         return {
           id:'',
+          show:false,
           musicList: [
             [
               {title: '爆炸1',src: './audio/life/explode/bomb0.ogg',levelOne:'生活',levelOneNum:'1',levelTwo:'爆炸',levelTwoNum:'1-1',},
@@ -275,15 +280,35 @@
               {title: '烟花爆竹',src: './audio/life/firecracker/烟花爆竹.mp3',levelOne:'生活',levelOneNum:'1',levelTwo:'鞭炮',levelTwoNum:'1-13',},
             ],
             // [
-            //   {title: '把棋子放在棋盘上',src: './audio/life/firecracker/把棋子放在棋盘上.mp3',levelOne:'生活',levelOneNum:'1',levelTwo:'棋',levelTwoNum:'1-14',},
-            //   {title: '拿棋子放棋子很多次',src: './audio/life/firecracker/拿棋子放棋子很多次.mp3',levelOne:'生活',levelOneNum:'1',levelTwo:'棋',levelTwoNum:'1-14',},
-            //   {title: '棋盘上滚动的棋子',src: './audio/life/firecracker/棋盘上滚动的棋子.mp3',levelOne:'生活',levelOneNum:'1',levelTwo:'棋',levelTwoNum:'1-14',},
+            //   {title: '把棋子放在棋盘上',src: './audio/life/firecracker/把棋子放在棋盘上.mp3',levelOne:'生活1',levelOneNum:'2',levelTwo:'棋',levelTwoNum:'1-14',},
+            //   {title: '拿棋子放棋子很多次',src: './audio/life/firecracker/拿棋子放棋子很多次.mp3',levelOne:'生活1',levelOneNum:'2',levelTwo:'棋',levelTwoNum:'1-14',},
+            //   {title: '棋盘上滚动的棋子',src: './audio/life/firecracker/棋盘上滚动的棋子.mp3',levelOne:'生活1',levelOneNum:'2',levelTwo:'棋',levelTwoNum:'1-14',},
             // ]
-          ]
+          ],
+          listArr:[],
         }
       },
-      mounted() { },
-      methods: {}
+      mounted() {
+        this.getList()
+       },
+      methods: {
+        getList(){
+          let smallTitle = new Set();
+          let bigarr = []
+          let obj = {}
+          this.musicList.map(item=>{
+            item.map(sItem=>{
+              smallTitle.add(sItem.levelTwo)
+              // obj['title'+sItem.levelOneNum]={
+              //   title: sItem.levelOne,
+              //   list:Array.from(smallTitle)
+              // };
+            })
+          })
+          bigarr = Array.from(smallTitle)
+          this.listArr = bigarr;
+        }
+      }
     })
     
   </script>
